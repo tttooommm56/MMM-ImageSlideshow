@@ -31,7 +31,8 @@ Module.register("MMM-ImageSlideshow", {
         // if true, all images will be made grayscale, otherwise as they are
         makeImagesGrayscale: false,
         // list of valid file extensions, seperated by commas
-        validImageFileExtensions: 'bmp,jpg,gif,png',
+		validImageFileExtensions: 'bmp,jpg,gif,png',
+		animationSpeed: 2.5 * 1000,
 	},
     // load function
 	start: function () {
@@ -54,7 +55,7 @@ Module.register("MMM-ImageSlideshow", {
             // set the timer schedule to the slideshow speed
             var self = this;
             setInterval(function() {
-                self.updateDom(0);
+                self.updateDom(self.config.animationSpeed);
                 }, this.config.slideshowSpeed);
         }
 	},
@@ -76,7 +77,7 @@ Module.register("MMM-ImageSlideshow", {
                 // set loaded flag to true and update dom
                 if (this.imageList.length > 0) {
                     this.loaded = true;
-                    this.updateDom();
+                    this.updateDom(this.config.animationSpeed);
                 }
 			}
 		}
